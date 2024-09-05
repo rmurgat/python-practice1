@@ -1,5 +1,22 @@
+from collections import deque 
 
-class Stack:
+class StackDequeue:
+    def __init__(self):
+        self._elements = deque()
+
+    def push(self, element):
+        self._elements.append(element)
+
+    def pop(self):
+        return self._elements.pop()
+    
+    def __str__(self) -> str:
+        res = ""
+        for i in self._elements:
+            res = res + i + ", "
+        return "[" + res + "]"
+
+class MyStack:
     MAX = 10
     stack = [0] * MAX
     top = -1 
@@ -46,15 +63,16 @@ class Stack:
             s="Exception"
         return "[" + s + "]"
     
-'''
+
 def playingStacks():
-    stack = Stack()
+    stack = MyStack()
     stack.push(1)
     stack.push(2)
     stack.push(3)
     stack.push(4)
     stack.push(5)
 
+    print('.PLAYING WITH MY OWN STACK.')   
     print(stack)
 
     print('pop: ', stack.pop())
@@ -68,8 +86,8 @@ def playingStacks():
     print('Minus 6: ', stack)
 
 def playingEmptyStack():
-    print('.PLAYING WITH EMPTY STACK.')    
-    myEmptyStack = Stack()
+    print('.PLAYING WITH MY OWN EMPTY STACK.')    
+    myEmptyStack = MyStack()
     print('printing empty stack: ', myEmptyStack)
     myEmptyStack.push(1)
     myEmptyStack.push(2)
@@ -83,7 +101,34 @@ def playingEmptyStack():
     myEmptyStack.pop()
     print('printing pops() stack: ', myEmptyStack)
 
+def playingWithList():
+    print('.PLAYING STACKS WITH LIST.') 
+    mystack = []
 
+    mystack.append('Juan')
+    mystack.append('Pablo')
+    mystack.append('II')
+    mystack.append('Papa')
+    mystack.append('Churck')
+    mystack.append('Catholic')
+
+    print('printing stack: ', mystack)
+
+    popstr = mystack.pop()
+    print('printing stack.pop(): ', popstr)
+    print('printing stack after pop(): ', mystack)
+
+def playingWithStackDequeue():
+    stack = StackDequeue()
+
+    stack.push('Fredy')
+    stack.push('Javier')
+    stack.push('Fernando')
+    stack.push('Lazaro')
+    print('printing original stack: ', stack)
+    popresult = stack.pop()
+    print('printing stack after pop(): ', popresult)
+    print(stack)   
 
 def main():
     
@@ -92,14 +137,17 @@ def main():
         print("MAIN MENU")
         print("1. Stack program in Python")
         print("2. Dealing with Empty Stack")
+        print("3. Stack using Python List")
+        print("4. Stack using Collections.dequeue")
         print("99. to Exit")
         print("Type option:")
         x = int(input())
         match x:
             case 1: playingStacks()
             case 2: playingEmptyStack()
+            case 3: playingWithList()
+            case 4: playingWithStackDequeue()
             case 99: return
             case _: print("Invalid Option")
 
 main()
-'''
