@@ -13,15 +13,33 @@ class Queue:
             res = res + i + ", "
         return "[" + res + "]"
 
-queue = Queue()
+def playingQueueCollection():
+    queue = Queue()
 
-queue.enqueue('A')
-queue.enqueue('B')
-queue.enqueue('C')
-queue.enqueue('D')
-queue.enqueue('E')
+    queue.enqueue("Alberto")
+    queue.enqueue("Boriqua")
+    queue.enqueue("Camisiano")
+    queue.enqueue("David")
+    queue.enqueue("Ernesto")
 
-print(queue)
+    print("printing original queue: ", queue)
+    print("printing dequeue(): ", queue.dequeue())
+    print("printing after dequeue: ", queue)
 
+def main():
+    while True:
+        print("MAIN MENU")
+        print("1. playing Queue using collection")
+        print("2. playing Priority Queue")
+        print("99. to Exit")
+        print("Type option:")
+        x = int(input())
+        match x:
+            case 1: playingQueueCollection()
+            case 2: print("option 2, selected")
+            case 99: exit(0)
+            case _: print("Invalid Option")
+
+main()
 
 
